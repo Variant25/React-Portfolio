@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaRegObjectGroup } from 'react-icons/fa';
+
 
 function Certification() {
   return (
@@ -12,8 +12,8 @@ function Certification() {
               <div className="services__border"></div>
               <div className="services__content">
                 <div className="services__icon">
-                  <div className="services__box"></div>
-                  <FaRegObjectGroup />
+                  
+                 
                 </div>
                 <h2 className="services__title">Google UX Design</h2>
                 <p className="services__description"></p>
@@ -25,8 +25,8 @@ function Certification() {
               <div className="services__border"></div>
               <div className="services__content">
                 <div className="services__icon">
-                  <div className="services__box"></div>
-                  <FaRegObjectGroup />
+                 
+                 
                 </div>
                 <h2 className="services__title">Introduction to Git and Github</h2>
                 <p className="services__description"></p>
@@ -38,8 +38,8 @@ function Certification() {
               <div className="services__border"></div>
               <div className="services__content">
                 <div className="services__icon">
-                  <div className="services__box"></div>
-                  <FaRegObjectGroup />
+                
+                 
                 </div>
                 <h2 className="services__title">Crash Course on Python</h2>
                 <p className="services__description"></p>

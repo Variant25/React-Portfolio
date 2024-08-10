@@ -1,33 +1,81 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { RiCloseLine, RiMenu4Line, RiMoonLine } from 'react-icons/ri';
 
 function Navbar() {
+  useEffect(() => {
+    const navMenu = document.getElementById('nav-menu');
+    const navToggle = document.getElementById('nav-toggle');
+    const navClose = document.getElementById('nav-close');
+    const navLink = document.querySelectorAll('.nav__link');
+
+ 
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        navMenu.classList.add('show-menu');
+      });
+    }
+
+
+    if (navClose) {
+      navClose.addEventListener('click', () => {
+        navMenu.classList.remove('show-menu');
+      });
+    }
+
+
+    const linkAction = () => {
+      navMenu.classList.remove('show-menu');
+    };
+
+    navLink.forEach(n => n.addEventListener('click', linkAction));
+
+
+    const shadowHeader = () => {
+      const header = document.getElementById('header');
+      if (window.scrollY >= 50) {
+        header.classList.add('shadow-header');
+      } else {
+        header.classList.remove('shadow-header');
+      }
+    };
+
+    window.addEventListener('scroll', shadowHeader);
+
+   
+    return () => {
+      if (navToggle) navToggle.removeEventListener('click', () => navMenu.classList.add('show-menu'));
+      if (navClose) navClose.removeEventListener('click', () => navMenu.classList.remove('show-menu'));
+      navLink.forEach(n => n.removeEventListener('click', linkAction));
+      window.removeEventListener('scroll', shadowHeader);
+    };
+  }, []);
+
   return (
     <>
-        <header class="header" id="header">
-<nav class="nav container">
-   <a href="#" class="nav__logo">
-      <span class="nav__logo-circle">A</span>
-      <span class="nav__logo-name">Ayush Pandey</span>
-   </a>
-   <div class="nav__menu" id="nav-menu">
-      <span class="nav__title">Menu</span>
-      <h3 class="nav__name">Ayush</h3>
-      <ul class="nav__list">
-         <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
-         <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-         <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
-     
-      </ul>
-      <div class="nav__close" id="nav-close"><i class="ri-close-line"></i></div>
-   </div>
-   <div class="nav--buttons">
-      <i class="ri-moon-line change-theme" id="theme-button"></i>
-   </div>
-   <div class="nav__toggle" id="nav-toggle"><i class="ri-menu-4-line"></i></div>
-</nav>
-</header>
+      <header className="header" id="header">
+        <nav className="nav container">
+          <a href="#" className="nav__logo">
+            <span className="nav__logo-circle">A</span>
+            <span className="nav__logo-name">Ayush Pandey</span>
+          </a>
+          <div className="nav__menu" id="nav-menu">
+            <span className="nav__title">Menu</span>
+            <h3 className="nav__name">Ayush</h3>
+            <ul className="nav__list">
+              <li className="nav__item"><a href="#home" className="nav__link">Home</a></li>
+              <li className="nav__item"><a href="#about" className="nav__link">About</a></li>
+              <li className="nav__item"><a href="#projects" className="nav__link">Projects</a></li>
+            </ul>
+            <div className="nav__close" id="nav-close"><RiCloseLine /></div>
+          </div>
+          <div className="nav--buttons">
+        
+          </div>
+          <div className="nav__toggle" id="nav-toggle"><RiMenu4Line /></div>
+        </nav>
+      </header>
     </>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
